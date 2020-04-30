@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /*
-* Disable bitcode for iOS 9 projects.
+* Enable bitcode for iOS projects.
 */
 
 var fs = require('fs');
@@ -20,7 +20,7 @@ module.exports = function(context) {
   //We need to use parseSync because async causes problems when other plugins
   //are handling pbxproj file.
   xcodeProj.parseSync();
-  xcodeProj.updateBuildProperty('ENABLE_BITCODE', 'NO');
+  xcodeProj.updateBuildProperty('ENABLE_BITCODE', 'YES');
   fs.writeFileSync(pbxPath, xcodeProj.writeSync());
 };
 
